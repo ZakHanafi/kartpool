@@ -18,8 +18,12 @@ from django.urls import path, include
 from django.urls import path
 from rest_framework.routers import DefaultRouter
 from stores import views as stores_views
+from wishlists import views as wishlists_views
+from home import views as home_views
 
 router = DefaultRouter()
+
+router.register(r'stores',stores_views.StoreView,basename='stores')
 
 urlpatterns = [
     path('', include(router.urls)),

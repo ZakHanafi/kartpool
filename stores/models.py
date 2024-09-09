@@ -3,6 +3,16 @@ from django.contrib.gis.db import models
 from django.contrib.gis.geos import Point
 from django.core.validators import MaxValueValidator, MinValueValidator
 
+class StoreType(models.Model):
+	created_at = models.DateTimeField(auto_now_add=True)
+	name = models.CharField(unique=True, max_length=100)
+
+	def __str__(self):
+		return self.name
+
+	class Meta:
+		ordering = ["created_at"]
+
 # Create your models here.
 class Store(models.Model):
     id = models.CharField(primary_key=True, max_length=100)
